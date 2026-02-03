@@ -18,6 +18,8 @@ local cheat = require 'cheat'
 local player = require 'player'
 local Dialog = require 'dialog'
 local Prompt = require 'prompt'
+local beatEvents = require 'beat_events'
+local dunkPulse = require 'dunk_pulse'
 
 local testing = false
 local paused = false
@@ -156,6 +158,8 @@ function love.load(arg)
 
   Gamestate.switch(state,door,position)
 
+  dunkPulse:load()
+
   if argcheats then
     for k,arg in ipairs(cheats) do
       cheat:on(arg)
@@ -179,6 +183,12 @@ function love.update(dt)
   tween.update(dt > 0 and dt or 0.001)
   timer.update(dt)
   sound.cleanup()
+  dunkPulse:tick()
+
+  local beatOnset, payload = beatEvents:pollBeatOnset()
+  if beatOnset and payload then
+    dunkPulse:onBeatOnset(payload.beatIndex, payload.frameIndex)
+  end
 
   if debugger.on then
     collectgarbage("collect")
@@ -274,6 +284,8 @@ function love.draw()
   end
   fonts.revert()
   camera:unset()
+
+  dunkPulse:draw()
 
   if paused then
     love.graphics.setColor(75/255, 75/255, 75/255, 125/255)
