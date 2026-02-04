@@ -1,0 +1,23 @@
+{
+  "type": "ReplayVerdictCapsule.v1",
+  "timestamp": "2026-02-04T12:00:00.000Z",
+  "source_event": {
+    "event_type": "DIVERGENCE_REJECTION",
+    "merkle_root": "sha256:7f83b1...",
+    "last_valid_root": "sha256:e3b0c4..."
+  },
+  "context": {
+    "prompt_id": "aria-555-pos-99",
+    "workflow_sha": "sha256:d41d8c...",
+    "artifact_sha": "sha256:cf83e1..."
+  },
+  "drift_delta": {
+    "expected_steering_angle": 12.5,
+    "actual_can_angle": 14.2,
+    "tolerance_exceeded": true
+  },
+  "verdict": {
+    "status": "FAIL_CLOSED_ROLLBACK",
+    "reason": "Drift exceeded tolerance; replay invalidated and rolled back to last valid root."
+  }
+}
