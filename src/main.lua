@@ -6,6 +6,7 @@ local Gamestate = require 'vendor/gamestate'
 local sound = require 'vendor/TEsound'
 local timer = require 'vendor/timer'
 local cli = require 'vendor/cliargs'
+local MicoAdapter = require 'mico_adapter'
 
 local debugger = require 'debugger'
 local camera = require 'camera'
@@ -23,6 +24,8 @@ local dunkPulse = require 'dunk_pulse'
 
 local testing = false
 local paused = false
+local mico = nil
+local mico_telemetry_path = nil
 
 function love.load(arg)
   -- Check if this is the correct version of LOVE
@@ -51,6 +54,9 @@ function love.load(arg)
   cli:add_option("-p, --position=X,Y", "The positions to jump to ( requires level )")
   cli:add_option("-r, --door=NAME", "The door to jump to ( requires level )")
   cli:add_option("-t, --test", "Run all the unit tests")
+  cli:add_option("--policy=NAME", "MICO adapter policy: random, optuna, troy_abed")
+  cli:add_option("--seed=NUMBER", "Seed for MICO adapter")
+  cli:add_option("--telemetry=PATH", "Telemetry output path for MICO adapter")
   cli:add_option("-w, --wait", "Wait for three seconds")
   cli:add_option("-v, --vol-mute=CHANNEL", "Disable sound: all, music, sfx")
   cli:add_option("-x, --cheat=ALL/CHEAT1,CHEAT2", "Enable certain cheats ( some require level to function, else will crash with collider is nil )")
@@ -66,6 +72,16 @@ function love.load(arg)
     testing = true
     lovetest.run()
     return
+  end
+
+  if args["policy"] ~= "" then
+    local seed = tonumber(args["seed"]) or os.time()
+    mico = MicoAdapter.new(args["policy"], seed)
+    if args["telemetry"] ~= "" then
+      mico_telemetry_path = args["telemetry"]
+    else
+      mico_telemetry_path = "aria_training.ndjson"
+    end
   end
 
   if args["wait"] then
@@ -190,8 +206,37 @@ function love.update(dt)
     dunkPulse:onBeatOnset(payload.beatIndex, payload.frameIndex)
   end
 
+  if mico and _G.manifold then
+    mico:observe(_G.manifold)
+    local action = mico:act(_G.manifold)
+    if type(_G.apply_wasd_correction) == "function" then
+      _G.apply_wasd_correction(action)
+    end
+    if type(_G.calculate_rotary_efficiency) == "function" then
+      local reward = _G.calculate_rotary_efficiency(_G.manifold)
+      mico:train_step(_G.manifold, action, reward)
+    end
+  end
+
   if debugger.on then
     collectgarbage("collect")
+  end
+end
+
+function calculate_rotary_efficiency(m)
+  local drift = math.abs(m.eccentricity - 15.0)
+  local capped = math.max(drift, 1e-4)
+  local efficiency = 1.0 / (1.0 + capped * 1000.0)
+
+  local control_cost = math.abs(m.last_correction_magnitude or 0) * 0.1
+  local correction_penalty = (mico and mico.corrections_applied or 0) * 0.05
+
+  return math.max(0, math.min(1, efficiency - control_cost - correction_penalty))
+end
+
+function love.quit()
+  if mico then
+    mico:flush_telemetry(mico_telemetry_path)
   end
 end
 

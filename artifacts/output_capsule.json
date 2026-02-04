@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-02-04T12:00:00.000Z",
+  "event_type": "DIVERGENCE_REJECTION",
+  "merkle_root": "sha256:7f83b1...",
+  "can_proxy": {
+    "seed": "0x9E3779B9",
+    "tick": 1024,
+    "last_valid_root": "sha256:e3b0c4..."
+  },
+  "bridge_context": {
+    "prompt_id": "aria-555-pos-99",
+    "workflow_sha": "sha256:d41d8c...",
+    "artifact_sha": "sha256:cf83e1..."
+  },
+  "drift_delta": {
+    "expected_steering_angle": 12.5,
+    "actual_can_angle": 14.2,
+    "tolerance_exceeded": true
+  },
+  "action": "FAIL_CLOSED_ROLLBACK"
+}
