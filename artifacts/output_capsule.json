@@ -1,21 +1,50 @@
 {
-  "timestamp": "2026-02-04T12:00:00.000Z",
-  "event_type": "DIVERGENCE_REJECTION",
-  "merkle_root": "sha256:7f83b1...",
-  "can_proxy": {
-    "seed": "0x9E3779B9",
-    "tick": 1024,
-    "last_valid_root": "sha256:e3b0c4..."
+  "capsule_type": "OutputCapsule.v1",
+  "capsule_id": "cici-shellwave-e9-2026-02-05T00:00:00Z",
+  "timestamp": "2026-02-05T00:00:00.000Z",
+  "intent": "ACTUATION",
+  "deployment_state": {
+    "source": "E8-OPERATIONAL",
+    "target": "E9-CONVERGENCE",
+    "status": "ACTUATION_COMPLETE"
   },
-  "bridge_context": {
-    "prompt_id": "aria-555-pos-99",
-    "workflow_sha": "sha256:d41d8c...",
-    "artifact_sha": "sha256:cf83e1..."
+  "timeline": {
+    "total_frames": 252,
+    "apex_frame": 108,
+    "bpm": 128,
+    "spec_ref": "shellwave-128bpm"
   },
-  "drift_delta": {
-    "expected_steering_angle": 12.5,
-    "actual_can_angle": 14.2,
-    "tolerance_exceeded": true
+  "runtime": {
+    "engine": "ARIA-WHAM Unified Runtime",
+    "editor": "CiCi Music Video Studio",
+    "hooks": [
+      "exportVideo",
+      "fossilizeAction"
+    ]
   },
-  "action": "FAIL_CLOSED_ROLLBACK"
+  "controls": {
+    "wasd_navigation": "enabled",
+    "fossilize_key": "E"
+  },
+  "integrity": {
+    "merkle_anchor_root": "sha256:4c35c6f89de3bb4f91f68f6f8c5a5a4f6394e1f2d55da4a97c8214e59ea1e6cb",
+    "lineage_position": "fossil-ledger://cici/e9/000001",
+    "deterministic_sync": true,
+    "zero_drift_constraint": true
+  },
+  "zones": [
+    {
+      "name": "Crystal Bay",
+      "verification": "NDJSON ripple displacement"
+    },
+    {
+      "name": "Torii Bridge",
+      "verification": "48 Merkle lanterns"
+    },
+    {
+      "name": "Central Pagoda",
+      "verification": "12-shot cinematic manifold"
+    }
+  ],
+  "action": "INSCRIBE_OUTPUT_CAPSULE"
 }

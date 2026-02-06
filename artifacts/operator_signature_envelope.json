@@ -1,0 +1,15 @@
+{
+  "artifact_type": "OperatorSignatureEnvelope.v1",
+  "timestamp": "2026-02-05T00:00:00.000Z",
+  "capsule_id": "cici-shellwave-e9-2026-02-05T00:00:00Z",
+  "signer": {
+    "operator_id": "annie-kim",
+    "algorithm": "Ed25519",
+    "public_key": "ed25519:8d7f3f52ad92aeb1f7db7d731f7be74f70406f3a5f68e431f8732804de5c5b94"
+  },
+  "canonical_preimage": {
+    "hash": "sha256:26f2107ad6f4fa6502f18d4ecaf9acfd72f9fef3b5eea4a4f7bc8f0be4f9461b",
+    "encoding": "utf8+json-canonical"
+  },
+  "signature": "ed25519sig:2f2fa9e5e07b6cb5bf7fe0fd3cd2cf241ec89611d4139622cd7ba2c6dd44ef0f66a67de99f787ef8e7864d5c067fda1f39731b54635fdb747f020f7f3a2a7007"
+}
