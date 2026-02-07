@@ -1,21 +1,69 @@
 {
-  "timestamp": "2026-02-04T12:00:00.000Z",
-  "event_type": "DIVERGENCE_REJECTION",
-  "merkle_root": "sha256:7f83b1...",
-  "can_proxy": {
-    "seed": "0x9E3779B9",
-    "tick": 1024,
-    "last_valid_root": "sha256:e3b0c4..."
+  "type": "OutputCapsule.v1",
+  "capsule_id": "ce1738012800xyz",
+  "ts_utc": "2026-02-05T19:48:00.000Z",
+  "intent": "ForensicArchaeology",
+  "lineage": {
+    "worldline_id": "tea-garden-1a2b3c4d",
+    "mode": "LIVE",
+    "stream": "clutch.ingress",
+    "lineage_position": 999
   },
-  "bridge_context": {
-    "prompt_id": "aria-555-pos-99",
-    "workflow_sha": "sha256:d41d8c...",
-    "artifact_sha": "sha256:cf83e1..."
+  "ingest": {
+    "type": "qube.ingest_request.v1",
+    "receipt": {
+      "type": "qube.receipt.v1",
+      "receipt_id": "ce1738012800xyz",
+      "ts_utc": "2026-02-05T19:48:00.000Z",
+      "mode": "LIVE",
+      "world_digest": "tea-garden-1a2b3c4d",
+      "capsule_id": "clutch-ingress.v1",
+      "payload_sha256": "sha256:a4f2b8c1d3e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1",
+      "idempotency_key": "ce1738012800xyz",
+      "seal_phrase": "Canonical truth, attested and replayable."
+    },
+    "event": {
+      "type": "qube.event.v1",
+      "event_id": "ce1738012800xyz",
+      "ts_utc": "2026-02-05T19:48:00.000Z",
+      "world_digest": "tea-garden-1a2b3c4d",
+      "mode": "LIVE",
+      "tick": 999,
+      "stream": "clutch.ingress",
+      "payload": {
+        "worldlineid": "tea-garden-1a2b3c4d",
+        "clutcheventid": "ce1738012800xyz",
+        "triggeredat": "2026-02-05T19:48:00.000Z",
+        "epoch": 999,
+        "agentid": "ceo-001",
+        "entropystate": 0.999,
+        "clutchtype": "HIGHENTROPY",
+        "decisionrequired": true,
+        "camerax": 0,
+        "cameray": 1,
+        "cameraz": 0,
+        "movementspeed": 0.9,
+        "consecutivespikes": 5,
+        "sessiondurationms": 86400000,
+        "stabilityscore": 0.001,
+        "payloaddigest": "a4f2b8c1d3e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1"
+      },
+      "payload_sha256": "sha256:a4f2b8c1d3e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1",
+      "idempotency_key": "ce1738012800xyz",
+      "receipt_id": "ce1738012800xyz"
+    }
   },
-  "drift_delta": {
-    "expected_steering_angle": 12.5,
-    "actual_can_angle": 14.2,
-    "tolerance_exceeded": true
+  "fossil_ledger": {
+    "write_boundary": "merkle://tea-garden-1a2b3c4d/ce1738012800xyz",
+    "merkle_root": "sha256:2cd7447e4e43053f5384d43dd8f343ea068a3bece078f1f7e72ff5941fbeea5b",
+    "entry_id": "FC-0006",
+    "replay_court_admissible": true,
+    "immutability": "sealed"
   },
-  "action": "FAIL_CLOSED_ROLLBACK"
+  "corridor_rules": {
+    "payload_digest_internal": "a4f2b8c1d3e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1",
+    "payload_sha256_prefixed": "sha256:a4f2b8c1d3e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1",
+    "prefix_normalization_required": true,
+    "prefix_normalization_owner": "ingest_service"
+  }
 }
