@@ -1,23 +1,31 @@
 {
   "type": "ReplayVerdictCapsule.v1",
-  "timestamp": "2026-02-04T12:00:00.000Z",
-  "source_event": {
-    "event_type": "DIVERGENCE_REJECTION",
-    "merkle_root": "sha256:7f83b1...",
-    "last_valid_root": "sha256:e3b0c4..."
+  "capsule_id": "rvc-cici-shellwave-e9-2026-02-05T00:00:00Z",
+  "bound_to": {
+    "worldline": "worldline://cici/shellwave/e9",
+    "output_capsule_id": "cici-shellwave-e9-2026-02-05T00:00:00Z"
   },
-  "context": {
-    "prompt_id": "aria-555-pos-99",
-    "workflow_sha": "sha256:d41d8c...",
-    "artifact_sha": "sha256:cf83e1..."
-  },
-  "drift_delta": {
-    "expected_steering_angle": 12.5,
-    "actual_can_angle": 14.2,
-    "tolerance_exceeded": true
+  "timestamp": "2026-02-05T00:00:00.000Z",
+  "adjudication": {
+    "mode": "deterministic_replay",
+    "inputs": [
+      "timeline(252,apex=108)",
+      "bpm(128)",
+      "hooks(exportVideo,fossilizeAction)",
+      "zones(CrystalBay,ToriiBridge,CentralPagoda)"
+    ],
+    "cross_engine_verification": true,
+    "audit_grade": true
   },
   "verdict": {
-    "status": "FAIL_CLOSED_ROLLBACK",
-    "reason": "Drift exceeded tolerance; replay invalidated and rolled back to last valid root."
+    "status": "PASS",
+    "reason": "Timeline lock, Merkle anchoring, and zero-drift constraints satisfy replay-court invariants.",
+    "replayable": true,
+    "canonical_truth": true
+  },
+  "integrity": {
+    "preimage_sha256": "sha256:26f2107ad6f4fa6502f18d4ecaf9acfd72f9fef3b5eea4a4f7bc8f0be4f9461b",
+    "merkle_receipt": "merkle://fossil-forest/e9/lantern-048",
+    "court_admissible": true
   }
 }

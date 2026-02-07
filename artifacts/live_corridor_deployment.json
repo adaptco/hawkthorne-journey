@@ -1,0 +1,16 @@
+{
+  "artifact_type": "CorridorDeploymentReceipt.v1",
+  "timestamp": "2026-02-05T00:00:00.000Z",
+  "capsule_id": "cici-shellwave-e9-2026-02-05T00:00:00Z",
+  "target_nodes": [
+    "simulation-engine://neo-japan/cici-shellwave",
+    "worldline-host://neo-japan/e9",
+    "replay-node://fossil-court/primary",
+    "operator-console://cici/studio"
+  ],
+  "deployment": {
+    "status": "ACTIVE",
+    "health": "GREEN",
+    "rollback_anchor": "fossil-ledger://cici/e9/000001"
+  }
+}

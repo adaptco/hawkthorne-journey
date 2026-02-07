@@ -1,14 +1,32 @@
 # Gemini Audit Note
 
-## Capsule summary
-The output capsule captures a divergence rejection event at `2026-02-04T12:00:00.000Z` with a fail-closed rollback action. The capsule ties the event to a workflow, artifact hash, and a specific prompt, and records the last valid Merkle root for replay alignment.
+## Capsule identity
+`OutputCapsule.v1` for **CiCi Music Video Studio** has been finalized for the **E8→E9** transition under **ACTUATION** intent.
 
-## Validation rationale
-- **Deterministic anchors**: `merkle_root`, `workflow_sha`, and `artifact_sha` provide immutable identifiers for verifying the capsule lineage.
-- **Replay continuity**: `can_proxy.last_valid_root` explicitly defines the rollback anchor for replay consistency.
-- **Drift adjudication**: `drift_delta.tolerance_exceeded` is `true`, justifying the fail-closed verdict.
+- Capsule ID: `cici-shellwave-e9-2026-02-05T00:00:00Z`
+- Worldline: `worldline://cici/shellwave/e9`
+- Runtime: `ARIA-WHAM Unified Runtime`
+
+## Why this capsule is valid
+1. **Deterministic timeline lock**
+   - Timeline length is fixed at **252 frames**.
+   - Apex frame is pinned to **108**.
+   - Tempo is fixed at **128 BPM**.
+
+2. **Operational hook integrity**
+   - `exportVideo` is present for certified export pathways.
+   - `fossilizeAction` is present for frame-level canonical sealing.
+
+3. **Replay safety and drift containment**
+   - Zero-drift constraint is asserted as `true`.
+   - Merkle lineage is anchored with explicit root and receipt.
+   - Replay verdict is bound to the same capsule ID and worldline.
 
 ## Invariants satisfied
-- **Immutability**: The capsule preserves hashes and timestamps without mutation.
-- **Auditability**: The event type, action, and drift data are explicitly recorded.
-- **Replay safety**: Rollback references a last valid root to prevent divergence propagation.
+- **Immutability**: Merkle-root and preimage digest are included.
+- **Lineage continuity**: Capsule references a fossil-ledger lineage URI.
+- **Replay-court admissibility**: Verdict capsule flags court admissibility and canonical truth.
+- **Operational readiness**: Neo Japan zones are represented with verification surfaces.
+
+## Governance statement
+This artifact provides a human-readable and machine-verifiable rationale for the capsule’s validity and is suitable for governance review and replay-court intake.
