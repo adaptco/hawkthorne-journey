@@ -1,38 +1,31 @@
 {
   "type": "ReplayVerdictCapsule.v1",
-  "capsule_id": "rvc-ce1738012800xyz",
-  "ts_utc": "2026-02-05T19:48:00.000Z",
-  "worldline_binding": {
-    "worldline_id": "tea-garden-1a2b3c4d",
-    "source_event_id": "ce1738012800xyz",
-    "source_tick": 999,
-    "source_stream": "clutch.ingress"
+  "capsule_id": "rvc-cici-shellwave-e9-2026-02-05T00:00:00Z",
+  "bound_to": {
+    "worldline": "worldline://cici/shellwave/e9",
+    "output_capsule_id": "cici-shellwave-e9-2026-02-05T00:00:00Z"
   },
+  "timestamp": "2026-02-05T00:00:00.000Z",
   "adjudication": {
-    "status": "VALID_SIGNAL_CONFIRMED",
-    "payload_shape": true,
-    "entropy_semantics": true,
-    "idempotency": true,
-    "timebase": true,
-    "corridor_compatibility": true,
-    "production_safety": true
-  },
-  "proofs": {
-    "receipt_id": "ce1738012800xyz",
-    "idempotency_key": "ce1738012800xyz",
-    "payload_sha256": "sha256:a4f2b8c1d3e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1",
-    "seal_phrase": "Canonical truth, attested and replayable."
-  },
-  "rule_enforcement": {
-    "digest_prefix_normalization": {
-      "required": true,
-      "input": "event.payload.payloaddigest",
-      "output": "event.payload_sha256",
-      "enforced_by": "ingest_service"
-    }
+    "mode": "deterministic_replay",
+    "inputs": [
+      "timeline(252,apex=108)",
+      "bpm(128)",
+      "hooks(exportVideo,fossilizeAction)",
+      "zones(CrystalBay,ToriiBridge,CentralPagoda)"
+    ],
+    "cross_engine_verification": true,
+    "audit_grade": true
   },
   "verdict": {
-    "decision": "ACCEPT_AND_BIND",
-    "reason": "Signal is coherent and replay-safe when digest prefix normalization is enforced at ingest boundary."
+    "status": "PASS",
+    "reason": "Timeline lock, Merkle anchoring, and zero-drift constraints satisfy replay-court invariants.",
+    "replayable": true,
+    "canonical_truth": true
+  },
+  "integrity": {
+    "preimage_sha256": "sha256:26f2107ad6f4fa6502f18d4ecaf9acfd72f9fef3b5eea4a4f7bc8f0be4f9461b",
+    "merkle_receipt": "merkle://fossil-forest/e9/lantern-048",
+    "court_admissible": true
   }
 }
