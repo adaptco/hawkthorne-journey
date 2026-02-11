@@ -1,27 +1,32 @@
 # Gemini Audit Note
 
-## Scope
-This audit note documents a forensic-archaeology pass over the Tea Garden Clutch ingress event and its corridor artifacts. The objective is to produce machine-verifiable, replay-court-admissible records with explicit worldline binding and digest hygiene.
-
 ## Capsule identity
-- **Output capsule type**: `OutputCapsule.v1`
-- **Replay verdict type**: `ReplayVerdictCapsule.v1`
-- **Worldline**: `tea-garden-1a2b3c4d`
-- **Event / receipt / idempotency key**: `ce1738012800xyz`
-- **Timestamp (UTC ISO-8601)**: `2026-02-05T19:48:00.000Z`
+`OutputCapsule.v1` for **CiCi Music Video Studio** has been finalized for the **E8→E9** transition under **ACTUATION** intent.
 
-## What was corrected
-1. **Lossless payload preservation**
-   - The full original ingress payload is now preserved verbatim under `ingest.event.payload` (including camera vectors, movement metrics, and raw digest field).
-2. **Worldline + replay binding**
-   - The replay verdict now binds to worldline id, source event id, tick, and stream for deterministic cross-engine checks.
-3. **Corridor-grade digest rule clarity**
-   - The artifact explicitly separates raw `payloaddigest` (payload-level hex) from envelope-level `payload_sha256` (`sha256:`-prefixed), and assigns enforcement ownership to ingest service.
-4. **Fossil-ledger inscription semantics**
-   - Output capsule includes Merkle write boundary, root, ledger entry id, admissibility, and sealed immutability status.
+- Capsule ID: `cici-shellwave-e9-2026-02-05T00:00:00Z`
+- Worldline: `worldline://cici/shellwave/e9`
+- Runtime: `ARIA-WHAM Unified Runtime`
+
+## Why this capsule is valid
+1. **Deterministic timeline lock**
+   - Timeline length is fixed at **252 frames**.
+   - Apex frame is pinned to **108**.
+   - Tempo is fixed at **128 BPM**.
+
+2. **Operational hook integrity**
+   - `exportVideo` is present for certified export pathways.
+   - `fossilizeAction` is present for frame-level canonical sealing.
+
+3. **Replay safety and drift containment**
+   - Zero-drift constraint is asserted as `true`.
+   - Merkle lineage is anchored with explicit root and receipt.
+   - Replay verdict is bound to the same capsule ID and worldline.
 
 ## Invariants satisfied
-- **Determinism**: Stable event identifiers and worldline/tick references across all artifacts.
-- **Idempotency safety**: Shared `idempotency_key` and receipt/event alignment.
-- **Replay admissibility**: Proof bundle contains digest and receipt anchors required for replay-court verification.
-- **Governance explainability**: Human-readable rationale maps directly to machine fields without hidden transformations.
+- **Immutability**: Merkle-root and preimage digest are included.
+- **Lineage continuity**: Capsule references a fossil-ledger lineage URI.
+- **Replay-court admissibility**: Verdict capsule flags court admissibility and canonical truth.
+- **Operational readiness**: Neo Japan zones are represented with verification surfaces.
+
+## Governance statement
+This artifact provides a human-readable and machine-verifiable rationale for the capsule’s validity and is suitable for governance review and replay-court intake.
